@@ -38,3 +38,15 @@ import Jimp from "jimp";
     fs.unlinkSync(file);
   }
 }
+
+export function validateUrl(url) {
+    if (!url) {
+        return 'Image URL is required';
+    }
+    // Regular expression to validate URL format
+    const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+    if (!urlRegex.test(url)) {
+        return 'Invalid image URL format';
+    }
+    return null;
+}
